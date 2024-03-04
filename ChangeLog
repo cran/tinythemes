@@ -1,0 +1,33 @@
+2024-03-04  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Version, Date): Release 0.0.2
+	* R/theme.R: Updated for ggplot2 3.5.0, typos fixed
+	* man/theme_ipsum_rc.Rd: Regenerated
+	* inst/NEWS.Rd: Added
+
+2024-01-08  Dirk Eddelbuettel  <edd@debian.org>
+
+	* R/theme.R: Minor edits
+	* man/theme_ipsum_rc.Rd: Regenerated
+
+2023-12-18  Dirk Eddelbuettel  <edd@debian.org>
+
+	* README.md: Added with demo chart and motivation
+	* demo/theme.R: Simple demo without / with the theme
+	* .github/workflows/r2u.yaml: Added
+	* ChangeLog: Added
+
+2023-12-15  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Version, Date): Release 0.0.1
+	* R/themes.R: Switch to protecting example via 'if (interactive())'
+	as font is missing when in headless use plotting to postscript device
+
+2023-12-11  Dirk Eddelbuettel  <edd@debian.org>
+
+	* R/themes.R: Import 'theme_ipsum_rc()' from hrbrthemes, apply some polish
+	* man/theme_ipsum_rc.Rd: Generated after small fixes
+	* man/tinythemes-package.Rd: Auto-generated stanza
+	* LICENSE: Full credit to Bob Rudis
+	* NAMESPACE: Import only ggplot2
+	* DESCRIPTION: New minimal package from pkgKitten::kitten()

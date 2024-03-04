@@ -1,27 +1,25 @@
 #' A precise & pristine [ggplot2] theme with opinionated defaults and an emphasis on typography
 #'
-#' You should [hrbrthemes::import_roboto_condensed()] first and also install the fonts on your
-#' system before trying to use this theme.
-#'
-#' There is an option `hrbrthemes.loadfonts` which -- if set to `TRUE` -- will
+#' You should consult the documentation of the \pkg{hrbrthemes} package if the font does not load
+#' properly. There is an option `hrbrthemes.loadfonts` which -- if set to `TRUE` -- will
 #' call `extrafont::loadfonts()` to register non-core fonts with R PDF & PostScript
 #' devices. If you are running under Windows, the package calls the same function
 #' to register non-core fonts with the Windows graphics device.
 #'
 #' @md
 #' @section Why Roboto Condensed?:
-#' It's free, has tolerable kerning pairs and multiple weights. It's also different
+#' It is free, has tolerable kerning pairs and multiple weights. It is also different
 #' than Arial Narrow and the fonts most folks use in ggplot2 charts.
 #'
 #' @md
 #' @param base_family,base_size base font family and size
-#' @param plot_title_family,plot_title_face,plot_title_size,plot_title_margin plot tilte family, face, size and margin
+#' @param plot_title_family,plot_title_face,plot_title_size,plot_title_margin plot title family, face, size and margin
 #' @param subtitle_family,subtitle_face,subtitle_size plot subtitle family, face and size
 #' @param subtitle_margin plot subtitle margin bottom (single numeric value)
 #' @param strip_text_family,strip_text_face,strip_text_size facet label font family, face and size
 #' @param caption_family,caption_face,caption_size,caption_margin plot caption family, face, size and margin
 #' @param axis_title_family,axis_title_face,axis_title_size axis title font family, face and size
-#' @param axis_title_just axis title font justificationk one of `[blmcrt]`
+#' @param axis_title_just axis title font justification one of `[blmcrt]`
 #' @param axis_text_size font size of axis text
 #' @param plot_margin plot margin (specify with [ggplot2::margin])
 #' @param panel_spacing panel spacing (use `unit()`)
@@ -39,7 +37,7 @@
 #' # seminal scatterplot
 #' ggplot(mtcars, aes(mpg, wt)) +
 #'   geom_point() +
-#'   labs(x="Fuel effiiency (mpg)", y="Weight (tons)",
+#'   labs(x="Fuel efficiency (mpg)", y="Weight (tons)",
 #'        title="Seminal ggplot2 scatterplot example",
 #'        subtitle="A plot that is only useful for demonstration purposes",
 #'        caption="Brought to you by the letter 'g'") +
@@ -54,8 +52,8 @@
 #' data.frame(table(mpg$class)) |>
 #'   ggplot(aes(x = Var1, y = Freq)) +
 #'   geom_col() +
-#'   geom_text(aes(label = Freq), nudge_y = 3) +
-#'   labs(x="Fuel effiiency (mpg)", y="Weight (tons)",
+#'   geom_text(aes(label = Freq), nudge_y=3) +
+#'   labs(x="Fuel efficiency (mpg)", y="Weight (tons)",
 #'        title="Seminal ggplot2 bar chart example",
 #'        subtitle="A plot that is only useful for demonstration purposes",
 #'        caption="Brought to you by the letter 'g'") +
@@ -64,8 +62,7 @@
 #' }
 #' @import ggplot2
 #' @export
-theme_ipsum_rc <- function(
-  base_family="Roboto Condensed", base_size = 11.5,
+theme_ipsum_rc <- function(base_family="Roboto Condensed", base_size = 11.5,
   plot_title_family=base_family, plot_title_size = 18,
   plot_title_face="bold", plot_title_margin = 10,
   subtitle_family=if (.Platform$OS.type == "windows") "Roboto Condensed" else "Roboto Condensed Light",
@@ -95,9 +92,9 @@ theme_ipsum_rc <- function(
   ret <- ret + theme(panel.spacing = panel_spacing)
 
   if (inherits(grid, "character") | grid == TRUE) {
-    ret <- ret + theme(panel.grid = element_line(color = grid_col, size = 0.2))
-    ret <- ret + theme(panel.grid.major = element_line(color = grid_col, size = 0.2))
-    ret <- ret + theme(panel.grid.minor = element_line(color = grid_col, size = 0.15))
+    ret <- ret + theme(panel.grid = element_line(color = grid_col, linewidth = 0.2))
+    ret <- ret + theme(panel.grid.major = element_line(color = grid_col, linewidth = 0.2))
+    ret <- ret + theme(panel.grid.minor = element_line(color = grid_col, linewidth = 0.15))
 
     if (inherits(grid, "character")) {
       if (regexpr("X", grid)[1] < 0) ret <- ret + theme(panel.grid.major.x = element_blank())
@@ -116,22 +113,22 @@ theme_ipsum_rc <- function(
   }
 
   if (inherits(axis, "character") | axis == TRUE) {
-    ret <- ret + theme(axis.line = element_line(color = axis_col, size = 0.15))
+    ret <- ret + theme(axis.line = element_line(color = axis_col, linewidth = 0.15))
     if (inherits(axis, "character")) {
       axis <- tolower(axis)
       if (regexpr("x", axis)[1] < 0) {
         ret <- ret + theme(axis.line.x = element_blank())
       } else {
-        ret <- ret + theme(axis.line.x = element_line(color = axis_col, size = 0.15))
+        ret <- ret + theme(axis.line.x = element_line(color = axis_col, linewidth = 0.15))
       }
       if (regexpr("y", axis)[1] < 0) {
         ret <- ret + theme(axis.line.y = element_blank())
       } else {
-        ret <- ret + theme(axis.line.y = element_line(color = axis_col, size = 0.15))
+        ret <- ret + theme(axis.line.y = element_line(color = axis_col, linewidth = 0.15))
       }
     } else {
-      ret <- ret + theme(axis.line.x = element_line(color = axis_col, size = 0.15))
-      ret <- ret + theme(axis.line.y = element_line(color = axis_col, size = 0.15))
+      ret <- ret + theme(axis.line.x = element_line(color = axis_col, linewidth = 0.15))
+      ret <- ret + theme(axis.line.y = element_line(color = axis_col, linewidth = 0.15))
     }
   } else {
     ret <- ret + theme(axis.line = element_blank())
@@ -142,9 +139,9 @@ theme_ipsum_rc <- function(
     ret <- ret + theme(axis.ticks.x = element_blank())
     ret <- ret + theme(axis.ticks.y = element_blank())
   } else {
-    ret <- ret + theme(axis.ticks = element_line(size = 0.15))
-    ret <- ret + theme(axis.ticks.x = element_line(size = 0.15))
-    ret <- ret + theme(axis.ticks.y = element_line(size = 0.15))
+    ret <- ret + theme(axis.ticks = element_line(linewidth = 0.15))
+    ret <- ret + theme(axis.ticks.x = element_line(linewidth = 0.15))
+    ret <- ret + theme(axis.ticks.y = element_line(linewidth = 0.15))
     ret <- ret + theme(axis.ticks.length = grid::unit(5, "pt"))
   }
 
